@@ -48,7 +48,6 @@ function split(str, separator = " ") {
 //------------------------------------------------------------------------------
 // Grunnföll sem skilgreina á
 
-//komið
 function longest(str) {
   if (!isString(str)) {
     return null;
@@ -87,7 +86,6 @@ console.assert(
 );
 console.assert(longest(null) === null, "longest: skilar null ef str er null");
 
-//komið
 function shortest(str) {
   if (!isString(str)) {
     return null;
@@ -126,7 +124,6 @@ console.assert(
 );
 console.assert(shortest(null) === null, "shortest: skilar null ef str er null");
 
-//komið
 function reverse(str) {
   if (isString(str)) {
     const split = str.split("");
@@ -145,7 +142,6 @@ console.assert(
   "reverse: ef ekki strengur, skila null"
 );
 
-//komið
 function palindrome(str) {
   if (isString(str) && str !== "") {
     const reversed = reverse(str);
@@ -206,5 +202,70 @@ console.assert(consonants("bdðfghjklmnprstvxþ") === 18, "consonants: telur all
 // Leiðbeint ferli
 
 function start() {
-  // Útfæra
+  alert(
+    "Leiðbeiningar:\n" +
+      "Sláðu inn nokkur orð að eigin vali og strengjagreinirinn mun skoða orðin og birta eftirfarandi niðurstöður um þau:\n\n" +
+      "-Lengsta orðið.\n" +
+      "-Stysta orðið.\n" +
+      "-Orðinu snúið við.\n" +
+      "-Fjölda sérhljóða í orðinu.\n" +
+      "-Fjölda samhljóða í orðinu.\n" +
+      "-Hvort strengurinn sé samhverfur.\n" 
+  );
+
+  let continueProgram = true;
+
+  while (continueProgram) {
+    let input = prompt("Sláðu inn orð til þess að greina:");
+
+    if (input === null || input === "") {
+      console.info("Ekkert inntak gefið.");
+    } else {
+      let lengstaOrd = longest(input);
+      let stystaOrd = shortest(input);
+      let strengurOfugur = reverse(input);
+      let erSamhverfur = palindrome(input);
+      let fjoldiSerhljoda = vowels(input);
+      let fjoldiSamhljoda = consonants(input);
+
+      let nidurstodur = "Niðurstöður:\n\n";
+
+      if (lengstaOrd !== null) {
+        nidurstodur += `Lengsta orðið: ${lengstaOrd}\n`;
+        console.info(`Lengsta orðið: ${lengstaOrd}`);
+      } else {
+        nidurstodur += "Lengsta orðið: Villa\n";
+        console.error("Villa að finna lengsta orðið.");
+      }
+
+      if (stystaOrd !== null) {
+        nidurstodur += `Stysta orðið: ${stystaOrd}\n`;
+        console.info(`Stysta orðið: ${stystaOrd}`);
+      } else {
+        nidurstodur += "Stysta orðið: Villa\n";
+        console.error("Villa að finna stysta orðið.");
+      }
+
+      if (strengurOfugur !== null) {
+        nidurstodur += `Orðið öfugt: ${strengurOfugur}\n`;
+        console.info(`Orðið öfugt: ${strengurOfugur}`);
+      } else {
+        nidurstodur += "Orðið öfugt: Villa\n";
+        console.error("Villa að finna orðið öfugt.");
+      }
+
+      nidurstodur += `Er orðið samhverft: ${erSamhverfur ? "Já" : "Nei"}\n`;
+      console.info(`Er orðið samhverft: ${erSamhverfur}`);
+
+      nidurstodur += `Fjöldi sérhljóða: ${fjoldiSerhljoda}\n`;
+      console.info(`Fjöldi sérhljóða: ${fjoldiSerhljoda}`);
+
+      nidurstodur += `Fjöldi samhljóða: ${fjoldiSamhljoda}\n`;
+      console.info(`Fjöldi samhljóða: ${fjoldiSamhljoda}`);
+
+      alert(nidurstodur);
+    }
+
+    continueProgram = confirm("Viltu greina fleiri orð?");
+  }
 }
