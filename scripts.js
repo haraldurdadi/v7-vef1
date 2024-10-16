@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 // Fastar
 
-/** Íslenskir sérhljóðar */
+/** Íslenskir sérhljóðar bættir útfrá github lýsingu */
 const CONSONANTS = "bdðfghjklmnprstvxþ".split("");
 
 /** Íslenskir samhljóðar */
@@ -158,10 +158,10 @@ function vowels(str) {
     return 0;
   }
   const lagstafirStr = str.toLowerCase();
-  const stafir = split(lagstafirStr, '');
+  const stafir = split(lagstafirStr, "");
   let count = 0;
 
-  for(let i = 0; i < stafir.length; i++) {
+  for (let i = 0; i < stafir.length; i++) {
     if (VOWELS.includes(stafir[i])) {
       count++;
     }
@@ -171,9 +171,18 @@ function vowels(str) {
 console.assert(vowels("halló") === 2, "vowels: skilar fjölda sérhljóða í str");
 console.assert(vowels("bmx") === 0, "vowels: ef engir sérhljóðar skilar 0");
 console.assert(vowels("") === 0, "vowels: ef tómur strengur þá skila 0");
-console.assert(vowels(false) === 0, "vowels: ef str er ekki strengur þá skila 0");
-console.assert(vowels("EYÓ") === 3, "vowels: telur íslenska hástafs sérhljóða með");
-console.assert(vowels("aeiouyáéýúíóöæ") === 14, "vowels: telur alla íslenska sérhljóða");
+console.assert(
+  vowels(false) === 0,
+  "vowels: ef str er ekki strengur þá skila 0"
+);
+console.assert(
+  vowels("EYÓ") === 3,
+  "vowels: telur íslenska hástafs sérhljóða með"
+);
+console.assert(
+  vowels("aeiouyáéýúíóöæ") === 14,
+  "vowels: telur alla íslenska sérhljóða"
+);
 console.assert(vowels("123") === 0, "vowels: ef tölur inní str skilar 0");
 
 function consonants(str) {
@@ -181,22 +190,40 @@ function consonants(str) {
     return 0;
   }
   const lagstafirStr = str.toLowerCase();
-  const stafir = split(lagstafirStr, '');
+  const stafir = split(lagstafirStr, "");
   let count = 0;
 
-  for(let i = 0; i< stafir.length; i++) {
+  for (let i = 0; i < stafir.length; i++) {
     if (CONSONANTS.includes(stafir[i])) {
       count++;
     }
   }
   return count;
 }
-console.assert(consonants("halló") === 3, "consonants: skilar fjölda samhljóða í str");
-console.assert(consonants("aeiouyáéýúíóöæ") === 0, "consonants: engir sérhljóðar í samhljóðum");
-console.assert(consonants("") === 0, "consonants: ef str er tómur strengur skilar 0");
-console.assert(consonants(false) === 0, "consonants: ef str er ekki strengur skilar 0");
-console.assert(consonants("HÆ") === 1, "consonants: telur íslenska hástafs samhljóða með");
-console.assert(consonants("bdðfghjklmnprstvxþ") === 18, "consonants: telur alla samhljóða með");
+console.assert(
+  consonants("halló") === 3,
+  "consonants: skilar fjölda samhljóða í str"
+);
+console.assert(
+  consonants("aeiouyáéýúíóöæ") === 0,
+  "consonants: engir sérhljóðar í samhljóðum"
+);
+console.assert(
+  consonants("") === 0,
+  "consonants: ef str er tómur strengur skilar 0"
+);
+console.assert(
+  consonants(false) === 0,
+  "consonants: ef str er ekki strengur skilar 0"
+);
+console.assert(
+  consonants("HÆ") === 1,
+  "consonants: telur íslenska hástafs samhljóða með"
+);
+console.assert(
+  consonants("bdðfghjklmnprstvxþ") === 18,
+  "consonants: telur alla samhljóða með"
+);
 
 //------------------------------------------------------------------------------
 // Leiðbeint ferli
@@ -210,7 +237,7 @@ function start() {
       "-Orðinu snúið við.\n" +
       "-Fjölda sérhljóða í orðinu.\n" +
       "-Fjölda samhljóða í orðinu.\n" +
-      "-Hvort strengurinn sé samhverfur.\n" 
+      "-Hvort strengurinn sé samhverfur.\n"
   );
 
   let continueProgram = true;
